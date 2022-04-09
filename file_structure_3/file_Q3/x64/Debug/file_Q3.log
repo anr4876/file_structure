@@ -1,3 +1,1 @@
-﻿  Q3.cpp
-C:\Users\user\Desktop\file_Q3\file_Q3\Q3.cpp(9,13): warning C4326: 'main'의 반환 형식이 'int'이어야 하는데 'void'입니다.
-  file_Q3.vcxproj -> C:\Users\user\Desktop\file_Q3\x64\Debug\file_Q3.exe
+﻿  file_Q3.vcxproj -> C:\git_code_up\file_structure\file_structure_3\x64\Debug\file_Q3.exe

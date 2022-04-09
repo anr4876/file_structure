@@ -1,5 +1,5 @@
 ﻿  Q4.cpp
-C:\Users\user\Desktop\file_Q4\file_Q4\Q4.cpp(10,18): warning C4101: 'result' :참조되지 않은 지역 변수입니다.
-C:\Users\user\Desktop\file_Q4\file_Q4\Q4.cpp(9,7): warning C4101: 'buf' :참조되지 않은 지역 변수입니다.
-C:\Users\user\Desktop\file_Q4\file_Q4\Q4.cpp(9,17): warning C4101: 'ch' :참조되지 않은 지역 변수입니다.
-  file_Q4.vcxproj -> C:\Users\user\Desktop\file_Q4\x64\Debug\file_Q4.exe
+C:\git_code_up\file_structure\file_structure_4\file_Q4\Q4.cpp(10,18): warning C4101: 'result' :참조되지 않은 지역 변수입니다.
+C:\git_code_up\file_structure\file_structure_4\file_Q4\Q4.cpp(9,7): warning C4101: 'buf' :참조되지 않은 지역 변수입니다.
+C:\git_code_up\file_structure\file_structure_4\file_Q4\Q4.cpp(9,17): warning C4101: 'ch' :참조되지 않은 지역 변수입니다.
+  file_Q4.vcxproj -> C:\git_code_up\file_structure\file_structure_4\x64\Debug\file_Q4.exe
