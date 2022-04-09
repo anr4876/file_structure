@@ -1,5 +1,2 @@
 ﻿  mailing_list.cpp
-C:\git_code_up\file_structure\mailing_list\mailing_list\mailing_list.cpp(11,2): warning C4091: 'typedef ': 변수를 선언하지 않으면 'Personal_information' 왼쪽은 무시됩니다.
-C:\git_code_up\file_structure\mailing_list\mailing_list\mailing_list.cpp(43,1): warning C4326: 'main'의 반환 형식이 'int'이어야 하는데 'void'입니다.
-C:\git_code_up\file_structure\mailing_list\mailing_list\mailing_list.cpp(25): warning C4172: 지역 변수 또는 임시: data의 주소를 반환하고 있습니다.
   mailing_list.vcxproj -> C:\git_code_up\file_structure\mailing_list\x64\Debug\mailing_list.exe

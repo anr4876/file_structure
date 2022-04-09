@@ -1,70 +1,102 @@
 #include <iostream>
+#include <stdlib.h>
 #include <string>
 using namespace std;
 
+typedef struct Node {
+	struct Node* next;
+	char* phone_number;
+	char* name;
+	char* adrress;
+}node;
 
-typedef struct Personal_information {  // Personal_information 노드 형식
-	string name;
-	string address;
-	int phone_number;
-	Personal_information* next;
-};
+Node* node_plus(node* k) {
+	char* add = (char*)malloc(sizeof(char));
+	char* na = (char*)malloc(sizeof(char));
+	char* num = (char*)malloc(sizeof(char));
+	node* node1 = (node*)malloc(sizeof(node));
 
-
-Personal_information* Add_list(Personal_information* point, Personal_information* head)  // 노드 생성하고 head에 연결
-{
-	Personal_information data;
-	Personal_information* pd = &data;
-	cout << "주소를 입력하세요 : "  ;
-	cin >> data.address;								// 주소 저장 
+	cout << "주소를 입력하세요 : ";
+	cin >> add;
+	node1->adrress = add;
+	
 	cout << "이름을 입력하세요 : ";
-	cin >> data.name;									// 이름 저장
-	cout << "번호를 입력하세요 : ";
-	cin >> data.phone_number;							// 번호 저장
-	data.next = point;									// 지금 생성한 노드의 다음 주소를 설정해준다
-	return pd;
+	cin >> na;
+	node1->name = na;
+
+	cout << "전화번호를 입력하세요 : ";
+	cin >> num;
+	node1->phone_number = num;
+
+	node1->next = NULL;
+	k->next = node1;
+	node1;
+	return node1;
 }
 
-void list_print(Personal_information* Tail) {
-	Personal_information* list = Tail;
-	
-	while(list->next == NULL) {
-		list = list->next;
-		cout << list->address << "\t";
-		cout << list->name << "\t";
-		cout << list->phone_number<<endl;
 
+int list_print(node* k) {
+	node* node1 = k->next;
+	int count = 1;
+	while ( node1 != NULL) {
+		cout << count << "번" << "\t";
+		cout << node1->adrress << "\t";
+		cout << node1->name << "\t";
+		cout << node1->phone_number << endl;
+		node1 = node1->next;
+		count++;
+	}
+	return count;
+}
+
+void list_delete(node* k,int num) {
+	int count = 0;
+	node* node_address;
+	node* node1 = k;
+	
+	while (count != num-1 ) {
+		node1 = node1->next;
+		count++;
 
 	}
- }
+	if (node1->next == NULL) {
 
-
-void main() 
-{
-	Personal_information Tail;						// 꼬리 생성
-	Personal_information head;						// 머리 생성
-	Tail.next = NULL;								// 꼬리 앞의 주소 NULL지정
-	head.next = NULL;
-	Personal_information* point = &head;			// 전에 만든 노드의 주소를 저장할 변수
-	int i = 0;
-	while (1) {
-		cout << "정보를 추가하려면 1, 삭제는 2, 확인은 3을 입력하시오 : ";
-		cin >> i;
-		list_print(&Tail);
-		if (i == 1) {
-			Personal_information* pdata = Add_list(point, &head);		// 노드 생성후 pdata에 만든 노드의 주소 저장
-			Tail.next = pdata;											// 방금 만든 노드에 꼬리를 이어줌
-			point = pdata;
-		}
-		else if (i == 2) {
-
-		}
-		else {
-
-		}
-		
-									// 만든 노드의 주소를 저장
-		
 	}
-	
+	node_address = node1->next;
+	node1->next = node1->next->next;
+	free(node_address);
+
+}
+
+int main() {
+
+	node* head = (node*)malloc(sizeof(node));
+	int k;
+	int num;
+	head->next = NULL;
+	node* before_node = head;
+	while (true)
+	{
+		cout << "(추가 1, 삭제 2) 번호를 입력하세요 : ";
+		cin >> k;
+		int count = list_print(head);
+		if (k == 1) {
+			before_node = node_plus(before_node);
+			list_print(head);
+		}
+		else if(k == 2) {
+			cout << "삭제할 번호를 입력하세요 : ";
+			cin >> num;
+			while (num < 1 || num > count ) {
+				cout << "다시 입력하세요 : ";
+				cin >> num;
+			}
+			list_delete(head, num);
+			list_print(head);
+		}
+
+	}
+
+
+	return 0;
 }
