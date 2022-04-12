@@ -1,20 +1,22 @@
 #include <iostream>
-#include <stdlib.h>
-#include <string>
+#include <stdio.h>
+#pragma warning(disable:4996)
+#define _CRT_SECURE_NO_WARNINGS
+
 using namespace std;
 
 typedef struct Node {
 	struct Node* next;
-	char* phone_number;
+	string phone_number;
 	char* name;
 	char* adrress;
 }node;
 
 Node* node_plus(node* k) {
-	char* add = (char*)malloc(sizeof(char));
-	char* na = (char*)malloc(sizeof(char));
-	char* num = (char*)malloc(sizeof(char));
-	node* node1 = (node*)malloc(sizeof(node));
+	char* add = new char;
+	char* na = new char;
+	string num = new char;
+	node* node1 = new node;
 
 	cout << "주소를 입력하세요 : ";
 	cin >> add;
@@ -34,12 +36,33 @@ Node* node_plus(node* k) {
 	return node1;
 }
 
+void file_print(node* k) {
+	node* node1 = k->next;
+
+	FILE* m_file = fopen("mailing.txt", "w");
+
+	while (node1 != NULL) {
+		fprintf(m_file, "주소 : ");
+		fprintf(m_file, node1->adrress);
+		fprintf(m_file, "\t이름 : ");
+		fprintf(m_file, node1->name);
+		fprintf(m_file, "\t전화번호 : ");
+		
+		fprintf(m_file, &node1->phone_number[0]);
+	
+		fprintf(m_file, "\n");
+
+		
+		node1 = node1->next;
+	}
+	fclose(m_file);
+}
 
 int list_print(node* k) {
 	node* node1 = k->next;
 	int count = 1;
 	while ( node1 != NULL) {
-		cout << count << "번" << "\t";
+	
 		cout << node1->adrress << "\t";
 		cout << node1->name << "\t";
 		cout << node1->phone_number << endl;
@@ -59,30 +82,28 @@ void list_delete(node* k,int num) {
 		count++;
 
 	}
-	if (node1->next == NULL) {
-
-	}
 	node_address = node1->next;
 	node1->next = node1->next->next;
-	free(node_address);
+	delete node_address;
 
 }
 
 int main() {
 
-	node* head = (node*)malloc(sizeof(node));
-	int k;
+	node* head = new node;
+	int k=0;
 	int num;
 	head->next = NULL;
 	node* before_node = head;
-	while (true)
+	while (k != 3)
 	{
-		cout << "(추가 1, 삭제 2) 번호를 입력하세요 : ";
+		cout << "(추가 1, 삭제 2, 종료 3) 번호를 입력하세요 : ";
 		cin >> k;
 		int count = list_print(head);
 		if (k == 1) {
 			before_node = node_plus(before_node);
 			list_print(head);
+			
 		}
 		else if(k == 2) {
 			cout << "삭제할 번호를 입력하세요 : ";
@@ -94,7 +115,8 @@ int main() {
 			list_delete(head, num);
 			list_print(head);
 		}
-
+		file_print(head);
+		
 	}
 
 
